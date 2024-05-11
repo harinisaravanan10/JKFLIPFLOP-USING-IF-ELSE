@@ -48,9 +48,37 @@ the clock signal.
 /* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by:HARINI S RegisterNumber:212223040058
 */
 ```
-Program for flipflops and verify its truth table in quartus using Verilog programming.
-Developed by: Abdur Rahman Basil A H
-RegisterNumber: 212223040002
+module Exp_07(q,qb,j,k,clock,reset);
+	input j,k,clock,reset;
+	output reg q,qb;
+always @(posedge (clock))
+	begin
+		if(!reset)
+			begin
+				q <= q;
+				qb <= qb;
+			end
+		else
+			begin
+				if(j == 0 && k == 0)
+					begin
+					q <= q;
+					qb <= qb;
+					end
+				else if (j != k)
+					begin
+					q <= j;
+					qb <= k;
+					end
+				else if (j ==1 && k == 1)
+					begin 
+					q <= ~q;
+					qb <= ~qb;
+					end
+			end
+	end
+endmodule
+
 ```
 
 **RTL LOGIC FOR FLIPFLOPS**
@@ -64,3 +92,4 @@ RegisterNumber: 212223040002
 
 
 **RESULTS**
+Thus a program to implement a JK flipflop using verilog and validating their functionality using their functional tables is successfully completed.
